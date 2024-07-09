@@ -41,9 +41,14 @@ Recomendaciones de Fer Herrera de carpetas:
 - ***/presentation***: 
   Lo que esta mas expuesto al usuario
   - (endpoints): RESTful API Endpoints
+- **/infrastructure**:
+  - /datasources: implementaciones
 - ***/domain***: 
-  Aca van reglas que rigen a otras capas
-  - uses-cases: Funcionalidades que hagan una tarea en particular
+  Aca van las reglas que rigen a otras capas (reglas de negocio)
+  - /uses-cases: Funcionalidades que hagan una tarea en particular
+  - /entities: 
+  - /datasources: origen(es) de datos
+  - /repository: 
 
 ### Conclusion
 Una vez aplicado UsesCases y Refactorizacion [el codigo que se tenia](./src/app.tablas.ts), quedo en una instancia de [ServerApp](./src/presentation/server-app.ts) al cual le pasamos los parametros necesarios que, en esta ocasion, obtenemos con [yargs](./src/config/plugins/args.plugins.ts) e invoca las funciones (*UsesCases*)
