@@ -3,6 +3,10 @@
 ## Config resumida
 Aca cambia [la configuracion](https://gist.github.com/Klerith/3ba17e86dc4fabd8301a59699b9ffc0b) al usar `ts-node` en lugar de `nodemon`
 
+0. Iniciar node y crear src/
+  ```
+  npm init -y
+  ```
 1. Instalar TypeScript y demás dependencias
   ```
   npm i -D typescript @types/node ts-node-dev rimraf
@@ -28,6 +32,7 @@ Aca cambia [la configuracion](https://gist.github.com/Klerith/3ba17e86dc4fabd830
     "start": "npm run build && node dist/app.js"
   ```
 
+---
 
 ## Configuracion de TS en Node
 Se tiene una [configuracion basica](https://gist.github.com/Klerith/47af527da090043f604b972b22dd4c01) para usar TS con Node.
