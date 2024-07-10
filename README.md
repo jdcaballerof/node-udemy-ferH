@@ -37,5 +37,5 @@
   *¹ Tienen lo mismo (no se porque se crean 2 si tienen lo mismo y solo sirven para dictar a infraestructure como deben lucir sus datasources y repositories, seccion 9 - clase 122 | 126)
 
 
--  [another]
+-  [another-pattern]
 -  
