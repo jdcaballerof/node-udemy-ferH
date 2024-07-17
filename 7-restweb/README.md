@@ -1,4 +1,5 @@
 # Servidores
+proyecto creado para las secciones 13, 14
 
 ## Notas importantes
 
@@ -11,4 +12,6 @@
   - Se obtienen los archivos key y certificado
   > El certificado no se reconoce como seguro por el navegador 
   
-- 
+- 202 Con Express se suele seguir el modelo MVC pero tambien se hará con Clean Architecture
+- 206 2-40: Se recomienda usar arrow functions en lugar de metodos tradicionales en las clases 
+- 206 4-05: Colocando un + se convierte un string a numero 
