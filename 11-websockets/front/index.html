@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        html, body {
+            min-height: 100vh;
+            background-color: beige;
+            box-sizing: border-box;
+            margin: 0;
+            font-family: 'Lucida Sans', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        form {
+            margin-bottom: 1.5rem;
+        }
+        #messages {
+            background-color: bisque;
+            flex-grow: 1;
+            width: 40rem;
+            margin: 0;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Websockets - <span id="status">OFFLINE</span></h1>
+
+    <ul id="messages">
+    </ul>
+
+    <form>
+        <input id="msg" type="text" autofocus placeholder="Enviar mensaje">
+
+        <button type="submit">Enviar</button>
+    </form>
+
+
+    <script>
+        let socket = null
+
+        function connectToWebsocket(){
+            socket = new WebSocket('ws://localhost:3000')
+    
+            socket.onopen = e => {
+                status.innerHTML = 'ONLINE'
+            }
+    
+            socket.onclose = e => {
+                status.innerHTML = 'OFFLINE'
+                setTimeout(() => {
+                    connectToWebsocket()
+                }, 1500);
+            }
+    
+            socket.onmessage = e => {
+                const data = JSON.parse(e.data)
+                console.log(data);
+                renderMsg(data.payload, 'server')
+            }
+        }
+
+
+        // UI
+        const form = document.querySelector('form')
+        const input = document.querySelector('#msg')
+        const messageBox = document.querySelector('#messages')
+        const status = document.querySelector('#status')
+
+        function renderMsg(msg, user) {
+            const messageBox = document.querySelector('#messages')
+            messageBox.innerHTML += `<li><span>${user.toUpperCase()}</span><p>${msg}</p></li>`
+        }
+
+        function sendMessage(msg) {
+            console.log('client index', msg);
+            socket?.send(msg)
+            renderMsg(msg, 'Me')
+        }
+
+        form.addEventListener('submit', event => {
+            event.preventDefault()
+            const msg = input.value
+            sendMessage(msg)
+        })
+
+
+        connectToWebsocket()
+    </script>
+</body>
+</html>

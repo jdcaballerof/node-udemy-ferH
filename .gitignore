@@ -1,0 +1,4 @@
+# Local Netlify folder
+.netlify
+/0-my-app
+/01-sequelize
